@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <style>
+    .body-chat {
+      margin: 0 auto;
+      max-width: 800px;
+      padding: 0 20px;
+    }
+
+    .container-chat {
+      border: 2px solid #dedede;
+      background-color: #cc9900;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .darker {
+      border-color: #ccc;
+      background-color: #ff9900;
+    }
+
+    .container-chat::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .container-chat img {
+      float: left;
+      max-width: 60px;
+      width: 100%;
+      margin-right: 20px;
+      border-radius: 50%;
+    }
+
+    .profile{
+      max-width: 200px;
+      width: 300%;
+      border-radius: 50%;
+    }
+
+    .container-chat img.right {
+      float: right;
+      margin-left: 20px;
+      margin-right:0;
+    }
+
+    .time-right {
+      float: right;
+      color: white;
+    }
+
+    .time-left {
+      float: left;
+      color: white;
+    }
+  </style>
+  <header>
+    <div align="center" style="color:white;">
+      <img src="https://i.ibb.co/phQTZp1/purhomo.png" alt="Avatar" class="profile" style="width:100%;">
+      <h3>Fariz Maulana Purhomo</h3>
+      <h5>5116100133</h5>
+    </div>
+    <hr>
+  </header>
+  <body style="background-color:#6d0000;">
+    <div class="container">
+      <div align="center">
+        <br>
+        <div>
+          <p style="color:white;">Username :</p>
+          <input type="text" id="pseudoInput">
+          <br>
+          <button id="pseudoSubmit">Simpan Nama</button>
+        </div>
+        <br><br>
+        <div>
+          <p style="color:white;">Caesar Cipher :</p>
+          <select id="cipherinput">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+            <option value=12>12</option>
+            <option value=13>13</option>
+            <option value=14>14</option>
+            <option value=15>15</option>
+            <option value=16>16</option>
+            <option value=17>17</option>
+            <option value=18>18</option>
+            <option value=19>19</option>
+            <option value=20>20</option>
+          </select>
+          <br>
+          <button value="1" id="sembunyikan">Sembunyikan Cipher dan shift pada chat</button>
+          <br>
+        </div>
+        <br><br>
+        <div class="body-chat" id="chatEntries"></div>
+        <div class="row" id="entries">
+          <textarea type="text" id="messageInput"></textarea>
+          <div class="btn-group">
+            <button class="btn" id="submit" data-loading-text="Kirim">Kirim</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <hr>
+    <div align="center" style="color:white;">
+      <h4>Final Project Keamanan Informasi dan Jaringan D</h4>
+    </div>
+    <br>
+  </footer>
+</html>
+<script type="text/javascript">
+$("#sembunyikan").click(function(){
+  if($("#sembunyikan").val() == '1'){
+      $(".encryptchat").hide();
+      $("#sembunyikan").val('0'); 
+      $("#sembunyikan").text('Lihat Cipher dan shift pada chat');         
+  }
+  else if($("#sembunyikan").val() == '0'){
+      $(".encryptchat").show();
+      $("#sembunyikan").val('1'); 
+      $("#sembunyikan").text('Sembunyikan Cipher dan shift pada chat');
+  }
+});
+</script>
